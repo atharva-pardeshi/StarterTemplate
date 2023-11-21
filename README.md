@@ -31,7 +31,7 @@ Follow these steps to get started with the Android App Starter Template:
 
 ## Video 📱
 
-<img alt="splashscreen.gif" height="1920" src="app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fsplashscreen.gif" width="720"/>
+<img alt="splashscreen.gif" height="550" src="app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fsplashscreen.gif" width="250"/>
 
 ## Tech Stack 💻
 
