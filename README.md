@@ -1,6 +1,8 @@
 # Android App Starter Template 🚀
 
-Kickstart your Android app development with this feature-rich Android App Starter Template. Whether you're a beginner or an experienced developer, this template provides a solid foundation for building modern Android applications.
+Kickstart your Android app development with this feature-rich Android App Starter Template. Whether
+you're a beginner or an experienced developer, this template provides a solid foundation for
+building modern Android applications.
 
 ## Features 🌟
 
@@ -27,9 +29,9 @@ Follow these steps to get started with the Android App Starter Template:
 
    Customize the template to fit your app's branding and extend it with additional features.
 
-## Screenshots 📱
+## Video 📱
 
-Include screenshots of your app to showcase its visual appearance.
+![splashscreen.gif](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fsplashscreen.gif)
 
 ## Tech Stack 💻
 
@@ -38,7 +40,8 @@ Include screenshots of your app to showcase its visual appearance.
 
 ## Contributing 🤝
 
-Contributions are welcome! If you'd like to contribute, please follow our [contribution guidelines](CONTRIBUTING.md).
+Contributions are welcome! If you'd like to contribute, please follow
+our [contribution guidelines](CONTRIBUTING.md).
 
 ## License 📄
 
