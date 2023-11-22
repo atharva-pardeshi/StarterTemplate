@@ -18,7 +18,7 @@ Follow these steps to get started with the Android App Starter Template:
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/atharva-pardeshi/StarterTemplate.git
+    git clone https://github.com/abhishek-shah-think/StarterTemplate.git
     ```
 
 2. **Open in Android Studio:**
