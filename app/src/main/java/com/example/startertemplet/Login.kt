@@ -35,49 +35,45 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.startertemplet.ui.theme.StarterTempletTheme
 
 @Composable
-fun LoginScreen() {
-    StarterTempletTheme {
-        Surface(
-            modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
+fun LoginScreen(navController: NavController) {
+    Column {
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            contentDescription = "App Logo",
+            colorFilter = ColorFilter.tint(color = Color.Black)
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+        Row(
+            verticalAlignment = Alignment.Bottom,
         ) {
-            Column {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                    contentDescription = "App Logo",
-                    colorFilter = ColorFilter.tint(color = Color.Black)
-                )
-
-                Spacer(modifier = Modifier.height(12.dp))
-                Row(
-                    verticalAlignment = Alignment.Bottom,
-                ) {
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Text(
-                        text = "Login", fontSize = 24.sp, fontWeight = FontWeight.Bold
-                    )
-                    Spacer(modifier = Modifier.width(5.dp))
-                    Text(
-                        text = "or", fontSize = 18.sp, fontWeight = FontWeight.Normal
-                    )
-                    Spacer(modifier = Modifier.width(5.dp))
-                    Text(
-                        text = "Signup", fontSize = 24.sp, fontWeight = FontWeight.Bold
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(20.dp))
-                MobileNumberEditText()
-            }
+            Spacer(modifier = Modifier.width(10.dp))
+            Text(
+                text = "Login", fontSize = 24.sp, fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.width(5.dp))
+            Text(
+                text = "or", fontSize = 18.sp, fontWeight = FontWeight.Normal
+            )
+            Spacer(modifier = Modifier.width(5.dp))
+            Text(
+                text = "Signup", fontSize = 24.sp, fontWeight = FontWeight.Bold
+            )
         }
+
+        Spacer(modifier = Modifier.height(20.dp))
+        MobileNumberEditText(navController)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MobileNumberEditText() {
+fun MobileNumberEditText(navController: NavController) {
     var mobileNumber by remember { mutableStateOf(TextFieldValue("")) }
 
     Column(
@@ -124,9 +120,7 @@ fun MobileNumberEditText() {
                         fontSize = 14.sp,
                     )
                     Text(
-                        text = "Terms Of Use",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
+                        text = "Terms Of Use", fontSize = 16.sp, fontWeight = FontWeight.Bold
                     )
                 }
 
@@ -138,9 +132,7 @@ fun MobileNumberEditText() {
                         fontSize = 14.sp,
                     )
                     Text(
-                        text = "Privacy Policy",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
+                        text = "Privacy Policy", fontSize = 16.sp, fontWeight = FontWeight.Bold
                     )
                 }
             }
@@ -152,6 +144,7 @@ fun MobileNumberEditText() {
                 // For example, validate the number or navigate to the next screen
                 // For now, just print the mobile number to the log
                 println("Entered Mobile Number: ${mobileNumber.text}")
+                navController.navigate("OTPScreen")
             }, modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 15.dp)
@@ -161,7 +154,8 @@ fun MobileNumberEditText() {
 
         Spacer(modifier = Modifier.height(10.dp))
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(10.dp)
         ) {
             Text(
@@ -169,9 +163,7 @@ fun MobileNumberEditText() {
                 fontSize = 14.sp,
             )
             Text(
-                text = " Get help",
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold
+                text = " Get help", fontSize = 16.sp, fontWeight = FontWeight.Bold
             )
         }
     }
@@ -181,7 +173,12 @@ fun MobileNumberEditText() {
 @Preview
 @Composable
 fun LoginPreview() {
+    val navController = rememberNavController()
     StarterTempletTheme {
-        LoginScreen()
+        Surface(
+            modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
+        ) {
+            LoginScreen(navController = navController)
+        }
     }
 }
