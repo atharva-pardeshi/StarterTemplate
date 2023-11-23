@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.startertemplet
 
 import androidx.compose.foundation.Image
@@ -14,9 +16,9 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,7 +33,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -75,36 +76,48 @@ fun LoginScreen(navController: NavController) {
 @Composable
 fun MobileNumberEditText(navController: NavController) {
     var mobileNumber by remember { mutableStateOf(TextFieldValue("")) }
+    var isError by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
             .padding(10.dp)
             .fillMaxWidth()
     ) {
-        // Use BasicTextField for editable text input
-        TextField(
+        OutlinedTextField(
             value = mobileNumber,
-            onValueChange = { mobileNumber = it },
-            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Phone),
-            textStyle = TextStyle.Default.copy(color = Color.Black), // Customize text color
-            visualTransformation = VisualTransformation.None, // Show actual input (no transformation)
+            onValueChange = {
+                mobileNumber = it
+                isError = it.text.length < 9
+            },
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+            textStyle = TextStyle(
+                fontSize = 18.sp,
+                color = Color.Black
+            ), // Customize text color
             leadingIcon = {
                 Row {
                     Spacer(modifier = Modifier.width(5.dp))
                     Text(text = "+91")
                 }
             },
-            trailingIcon = {
-                // You can use a trailing icon for additional functionality if needed
-            },
-            placeholder = {
+            label = {
                 Text("Enter your mobile number")
             },
+            isError = isError,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
                 .padding(10.dp)
         )
+
+        if (isError) {
+            Text(
+                text = "Mobile number should be between 9 and 10 digits",
+                color = Color.Red,
+                fontSize = 12.sp,
+                modifier = Modifier.padding(start = 16.dp)
+            )
+        }
 
         Box(
             modifier = Modifier
@@ -140,11 +153,15 @@ fun MobileNumberEditText(navController: NavController) {
         // Display a button or perform any action based on the entered mobile number
         Button(
             onClick = {
-                // Perform an action with the entered mobile number
-                // For example, validate the number or navigate to the next screen
-                // For now, just print the mobile number to the log
-                println("Entered Mobile Number: ${mobileNumber.text}")
-                navController.navigate("OTPScreen")
+                if (mobileNumber.text.length in 9..10) {
+                    // Perform an action with the entered mobile number
+                    // For example, validate the number or navigate to the next screen
+                    // For now, just print the mobile number to the log
+                    println("Entered Mobile Number: ${mobileNumber.text}")
+                    navController.navigate("OTPScreen")
+                } else {
+                    isError = true
+                }
             }, modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 15.dp)
