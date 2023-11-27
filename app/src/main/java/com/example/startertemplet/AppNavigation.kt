@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.startertemplet.ui.viewModel.LoginViewModel
 
 @Composable
 fun AppNavigation(){
@@ -20,6 +21,10 @@ fun AppNavigation(){
 
         composable("OTPScreen"){
             OtpScreen(navController)
+        }
+
+        composable("HomeScreen"){
+            HomeScreen(navController)
         }
     }
 }
