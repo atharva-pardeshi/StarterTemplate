@@ -159,7 +159,7 @@ fun OtpScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(100.dp))
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate("HomeScreen") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(end = 20.dp)

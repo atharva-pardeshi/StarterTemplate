@@ -2,6 +2,8 @@
 
 package com.example.startertemplet
 
+import android.view.View
+import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,9 +38,12 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.startertemplet.ui.theme.StarterTempletTheme
+import com.example.startertemplet.ui.viewModel.LoginViewModel
 
 @Composable
 fun LoginScreen(navController: NavController) {
@@ -77,6 +82,7 @@ fun LoginScreen(navController: NavController) {
 fun MobileNumberEditText(navController: NavController) {
     var mobileNumber by remember { mutableStateOf(TextFieldValue("")) }
     var isError by remember { mutableStateOf(false) }
+    val viewModel = hiltViewModel<LoginViewModel>()
 
     Column(
         modifier = Modifier
