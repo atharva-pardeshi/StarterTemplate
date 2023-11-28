@@ -30,6 +30,24 @@ android {
             )
         }
     }
+
+    flavorDimensions.add("version")
+    productFlavors {
+        create("production") {
+            dimension = "version"
+            applicationId = "com.example.startertemplet"
+            versionCode = 1
+            versionName = "1.0.0"
+        }
+
+        create("development") {
+            dimension = "version"
+            applicationId = "com.example.startertemplet.development"
+            versionCode = 1
+            versionName = "1.0.0"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
