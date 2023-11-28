@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
@@ -42,7 +43,7 @@ android {
 
         create("development") {
             dimension = "version"
-            applicationId = "com.example.startertemplet.development"
+            applicationId = "com.example.startertemplet"
             versionCode = 1
             versionName = "1.0.0"
         }
@@ -69,7 +70,6 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.1")
@@ -98,8 +98,16 @@ dependencies {
 
     //hilt dependencies
     implementation("com.google.dagger:hilt-android:2.48.1")
-    implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
     kapt("com.google.dagger:hilt-android-compiler:2.48.1")
+
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
+
+    // TODO: Add the dependencies for Firebase products you want to use
+    // When using the BoM, don't specify versions in Firebase dependencies
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
 }
 
 // Allow references to generated code
