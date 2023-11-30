@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
                 installSplashScreen()
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
-                ) {4
+                ) {
                     AppNavigation()
                 }
             }
